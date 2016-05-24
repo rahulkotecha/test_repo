@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 2.8)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+add_definitions(-DPIC=1 -std=c++11 -g)
+
+find_package(Boost COMPONENTS unit_test_framework REQUIRED)
+
+set(SOURCES
+    src/hello.cpp
+)
+add_executable(hello ${SOURCES})
+
+set(TESTS
+	test/test1.cpp)
+
+add_executable(testHello ${TESTS})
+
+target_link_libraries(testHello
+        ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
+)
+
